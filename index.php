@@ -1,8 +1,8 @@
 <?php include_once "header.php"; ?>
-<body>
+<body style="background-color:#008080;">
   <div class="wrapper">
     <section class="form signup">
-      <header>Realtime Chat App</header>
+      <header style=" text-align=center;">Realtime Chat System</header>
       <form action=".\php\signup.php" method="POST" enctype="multipart/form-data" autocomplete="off">
         <div class="error-text"></div>
         <div class="name-details">
