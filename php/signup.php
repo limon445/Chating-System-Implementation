@@ -1,6 +1,7 @@
 <?php
-  
+    session_start();
     include_once "config.php";
+	$errors = array();
     $fname = mysqli_real_escape_string($conn, $_POST['fname']);
     $lname = mysqli_real_escape_string($conn, $_POST['lname']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -28,12 +29,34 @@
                             $new_img_name = $time.$img_name;
                             if(move_uploaded_file($tmp_name,"images/".$new_img_name)){
                                 $ran_id = rand(time(), 100000000);
-                                $status = "Active now";
+                                $status = "Offline now";
+                                $code = rand(999999, 111111);
+                                $codestatus = "notverified";
                                 $encrypt_pass = md5($password);
-                                $insert_query = mysqli_query($conn, "INSERT INTO users (unique_id, fname, lname, email, password, img, status)
-                                VALUES ({$ran_id}, '{$fname}','{$lname}', '{$email}', '{$encrypt_pass}', '{$new_img_name}', '{$status}')");
-								header("location:verification.php");
-                                
+                                $insert_data = mysqli_query($conn, "INSERT INTO users (unique_id, fname, lname, email, password, img, status, CODE, codestatus)
+                                VALUES ('{$ran_id}', '{$fname}','{$lname}', '{$email}', '{$encrypt_pass}', '{$new_img_name}', '{$status}', '{$code}', '{$codestatus}')");
+								
+								if($insert_data){
+									$subject = "Email Verification Code";
+										$message = "Your verification code is $code";
+										
+										$sender = "From: shahiprem7890@gmail.com";
+									if(mail($email, $subject, $message, $sender)){
+											$info = "We've sent a verification code to your email - $email";
+												$_SESSION['info'] = $info;
+												$_SESSION['email'] = $email;
+												$_SESSION['password'] = $password;
+											header('location: verification.php');
+										exit();
+																				}
+									else{
+											echo "Failed while sending code!";
+										}
+												}
+										else{
+											echo "Failed while inserting data into database!";
+											}
+
                                 }else{
                                     echo "Something went wrong. Please try again!";
                                 }
@@ -49,9 +72,7 @@
         }else{
             echo "$email is not a valid email!";
         }
-    
-}
-	else{
-        echo "All input fields are required!";
     }
+   
+   
 ?>

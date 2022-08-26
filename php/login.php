@@ -10,21 +10,36 @@
             $user_pass = md5($password);
             $enc_pass = $row['password'];
             if($user_pass === $enc_pass){
-                $status = "Active now";
+                     //$_SESSION['email'] = $email;
+                $codestatus = $row['codestatus'];
+                if($codestatus == 'verified'){
+                 // $_SESSION['email'] = $email;
+                 // $_SESSION['password'] = $password;
+				  
+				  $status = "Active now";
                 $sql2 = mysqli_query($conn, "UPDATE users SET status = '{$status}' WHERE unique_id = {$row['unique_id']}");
                 if($sql2){
                     $_SESSION['unique_id'] = $row['unique_id'];
+					header('location: ..\users.php');
                     echo "success";
                 }else{
                     echo "Something went wrong. Please try again!";
                 }
-            }else{
+                }
+			else{
+				 header('location: verification.php');
+                    
+                }
+
+			}   
+		}
+            else{
                 echo "Email or Password is Incorrect!";
             }
         }else{
             echo "$email - This email not Exist!";
         }
-    }else{
-        echo "All input fields are required!";
-    }
+		
+	
+    
 ?>

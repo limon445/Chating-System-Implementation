@@ -1,3 +1,4 @@
+
 <html>
 <head>
   <link rel="stylesheet" href="..\style.css">
@@ -5,7 +6,7 @@
 <body>
   <div class="wrapper">
     <section class="form login">
-      <form action="#" method="POST" enctype="multipart/form-data" autocomplete="off">
+      <form action="Code.php" method="POST" enctype="multipart/form-data" autocomplete="off">
         <div class="error-text"></div>
         <div class="field input">
           <label>Verify Code</label>

@@ -1,8 +1,14 @@
+<?php 
+  session_start();
+  if(isset($_SESSION['unique_id'])){
+    header("location: users.php");
+  }
+?>
 <?php include_once "header.php"; ?>
-<body style="background-color:#008080;">
+<body">
   <div class="wrapper">
     <section class="form signup">
-      <header style=" text-align=center;">Realtime Chat System</header>
+      <header style="text-align: center;">Chat System</header>
       <form action=".\php\signup.php" method="POST" enctype="multipart/form-data" autocomplete="off">
         <div class="error-text"></div>
         <div class="name-details">
@@ -29,13 +35,20 @@
           <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
         </div>
         <div class="field button">
-          <input type="submit" name="submit" value="Continue to Chat">
+          <input type="submit" name="submit" value="SignUp">
         </div>
       </form>
       <div class="link">Already signed up? <a href="login.php">Login now</a></div>
     </section>
   </div>
-
+<footer style="text-align:center;margin-top:40px;">
+  <p>Developed by:  <br>
+<p style=" color:#FFFF00;"><marquee direction = "right" >Ibrahim Mohammed Sofi Uddin</marquee><br>
+  <p style=" color:#EA20F7  ;"><marquee>Nafisa Hassan</marquee><br>
+  
+   <p>Mohammad Limon Hosain  <br>
+</footer>
+<script src="javascript/pass-show-hide.js"></script>
 
 
 </body>

@@ -7,15 +7,16 @@
   font-family: 'Poppins', sans-serif;
 }
 body{
+  color:#00FFFF;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #f7f7f7;
+  background: #20B2AA;
   padding: 0 10px;
 }
 .wrapper{
-  background: #fff;
+  background:#008080;
   max-width: 450px;
   width: 100%;
   border-radius: 16px;
@@ -116,6 +117,7 @@ body{
 /* Users List CSS Start */
 .users{
   padding: 25px 30px;
+  color:white;
 }
 .users header,
 .users-list a{
@@ -124,6 +126,7 @@ body{
   padding-bottom: 20px;
   border-bottom: 1px solid #e6e6e6;
   justify-content: space-between;
+  color:green;
 }
 .wrapper img{
   object-fit: cover;
@@ -138,7 +141,7 @@ body{
   align-items: center;
 }
 :is(.users, .users-list) .content .details{
-  color: #000;
+  color: yellow;
   margin-left: 20px;
 }
 :is(.users, .users-list) .details span{
@@ -198,8 +201,8 @@ body{
   transition: all 0.2s ease;
 }
 .users .search button.active{
-  background: #333;
-  color: #fff;
+  background: ;
+  color: blue;
 }
 .search button.active i::before{
   content: '\f00d';
@@ -215,7 +218,7 @@ body{
   padding-bottom: 10px;
   margin-bottom: 15px;
   padding-right: 15px;
-  border-bottom-color: #f1f1f1;
+  border-bottom-color: white;
 }
 .users-list a:last-child{
   margin-bottom: 0px;
@@ -226,11 +229,11 @@ body{
   width: 40px;
 }
 .users-list a .details p{
-  color: #67676a;
+  color: yellow;
 }
 .users-list a .status-dot{
   font-size: 12px;
-  color: #468669;
+  color: white;
   padding-left: 10px;
 }
 .users-list a .status-dot.offline{
